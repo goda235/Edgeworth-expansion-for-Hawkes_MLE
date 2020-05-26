@@ -4,11 +4,11 @@
 ############################################################################
 
 # We compute the Variation of Z_T by "pracma".
-# calcultate a gradient and a hessian of Log-Likelihood l_T(\theta_0).
-# params : list(mu, alpha, beta)
+# calcultate a gradient and a hessian of log-likelihood l_T(\theta_0).
+# params : list(mu, alpha, beta, x=0)
 # MC : number of MC
 # given the inverse of the Fisher Info matrix as g (see another code)
-# given the 3rd moments of l_T(\theta_0) as Nu (see another code)
+# given the expectation of 3rd derivatives of l_T(\theta_0)/T as Nu (see another code)
 
 ############################################################################
 ############################################################################
@@ -42,8 +42,6 @@ for(i in 1:MC-1){
   print(i/MC*100)
 }
 
-#FI <- -hessian/t_max
-#(FI)
 Sigma <- var(Z)/t_max
 # hessianの平均として算出してみる
 mean_Sigma <- -matrix(c(mean(Z[,4]),mean(Z[,5]),mean(Z[,6])
@@ -78,7 +76,6 @@ M <- rbind(cbind(diag(3), matrix(0, nrow=3, ncol=9)),
            cbind((-1)*barSigma[4:12,1:3] %*% Sigma[1:3,1:3], diag(9)))
 
 round(M %*% C %*% Sigma %*% t(C) %*% t(M),1)
-#bar_Z <- t(C %*% t(Z))/sqrt(t_max) 
 tilde_Z <- t(M %*% C %*% t(Z)) / sqrt(t_max)
 
 V <- array(rep(0, 27), dim = c(3, 3, 3))
@@ -486,5 +483,3 @@ asymp_Beta <- function(x){
 
 curve(Vectorize(asymp_Beta)(x),-10,10,col='red')
 curve(dnorm(x,0,sqrt(g[3,3])),-10,10,add=T)
-
-
