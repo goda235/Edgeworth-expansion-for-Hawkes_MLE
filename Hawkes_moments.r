@@ -1,9 +1,9 @@
-###### 3rd moment and Fisher Infomation ###### 
+###### Moment (Fisher Infomation) ###### 
 
 ############################################################################
 ############################################################################
 
-# Compute the 3rd moment of l_T(\theta_0) and Fisher Infomation by MC.
+# Compute the expectation for derivatives of l_T(\theta_0)/T, inparticular the Fisher Infomation matrix by the Monte Carlo method.
 
 set.seed(0)
 
@@ -155,5 +155,5 @@ Third_Tensor_MC <- function(params, t_max, MC){
 # inverse
 (g <- solve(FI)) 
 
-# 3rd moments
+# 3rd derivatives
 (Nu <- Third_Tensor_MC(params, t_max, MC))
