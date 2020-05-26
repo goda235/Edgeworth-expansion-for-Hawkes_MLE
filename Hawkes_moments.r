@@ -1,4 +1,4 @@
-###### 3rd moment and Fisher Infomation #####
+###### 3rd moment and Fisher Infomation ###### 
 
 ############################################################################
 ############################################################################
@@ -43,55 +43,6 @@ X <- function(params, arrivals){
     X3 <- X3 + kernel_X3(params, arrivals[i], append(rep(arrivals[i],i), arrivals[(i+1):total_jump]))
   }
   return(list(X1,X2,X3))
-}
-
-########################################################################################################################
-########################################################################################################################
-########################################################################################################################
-
-# path of N_t
-# Ogata's method
-simulate_uni_hawkes <- function(params, t_max){
-  mu     <- params[1]
-  alpha  <- params[2]
-  beta   <- params[3]
-  x <- params[4]
-  arrivals <- 0 #t=0
-  s <- 0 #interarrival time
-  t <- 0 #jump time
-  lambda_star <- mu+x #start point of lambda
-  
-  D <- 1+(beta*log(runif(1)))/(lambda_star-mu)
-  
-  if(D>=0){
-    s <- min(-log(D)/beta,-log(runif(1))/mu)
-  }else{
-    s<- -log(runif(1))/mu
-  }
-  
-  t <- s
-  lambda <- mu + x*exp(-beta*s) + alpha #new value of lambda
-  if(t < t_max){
-    arrivals <- c(arrivals,t)
-  }
-  
-  while(t < t_max) {
-    D <- 1+(beta*log(runif(1)))/(lambda - mu)
-    if(D>=0){
-      s <- min(-log(D)/beta,-log(runif(1))/mu)
-    }else{
-      s<- -log(runif(1))/mu
-    }
-    
-    lambda <- mu + (lambda-mu)*exp(-beta*s) + alpha
-    t <- t + s
-    
-    if(t < t_max){
-      arrivals <- c(arrivals,t)
-    }
-    
-  }
-  return(c(arrivals,t_max))
 }
 
 ########################################################################################################################

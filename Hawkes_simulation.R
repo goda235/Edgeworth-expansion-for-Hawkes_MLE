@@ -1,3 +1,5 @@
+######  Hawkes Simulation ###### 
+
 par(mfrow=c(2,1),ps = 15,mar=c(4.3,4.5,2,1))
 
 set.seed(0)

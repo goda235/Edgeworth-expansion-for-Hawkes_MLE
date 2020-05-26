@@ -1,14 +1,19 @@
-###### FISHER INFOMATION #####
+###### Density of Edgeworth expansion ###### 
 
 ############################################################################
 ############################################################################
 
 # We compute the Variation of Z_T by "pracma".
 # calcultate a gradient and a hessian of Log-Likelihood l_T(\theta_0).
-# return : Var(Z_T).
 # params : list(mu, alpha, beta)
 # MC : number of MC
-# Nu（LLの3次微分の期待値）は他のソースから
+# given the inverse of the Fisher Info matrix as g (see another code)
+# given the 3rd moments of l_T(\theta_0) as Nu (see another code)
+
+############################################################################
+############################################################################
+############################################################################
+############################################################################
 
 set.seed(0)
 

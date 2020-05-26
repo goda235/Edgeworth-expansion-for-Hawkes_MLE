@@ -1,7 +1,9 @@
-M <- length(res_mu0)
-n <- 300 #分位点の分割幅
+###### Q-Q Plot ###### 
 
-# muについてQ-Q Plot
+M <- length(res_mu0)
+n <- 300 # num of quantile
+
+# Q-Q Plot w.r.t mu
 mini <- max(min(res_alpha0),-5*sqrt(g[1,1]))
 maxi <- min(max(res_alpha0),5*sqrt(g[1,1]))
 delta <- (maxi-mini)/n
@@ -25,7 +27,7 @@ for(i in 1:M){
   Normal_F_Mu <- append(Normal_F_Mu, pnorm(i/M, 0, sqrt(g[1,1])))
 }
 
-# alphaについてQ-Q Plot
+# Q-Q Plot w.r.t alpha
 mini <- max(min(res_alpha0),-5*sqrt(g[2,2]))
 maxi <- min(max(res_alpha0),5*sqrt(g[2,2]))
 delta <- (maxi-mini)/n
@@ -49,7 +51,7 @@ for(i in 1:M){
   Normal_F_Alpha <- append(Normal_F_Alpha, pnorm(i/M, 0, sqrt(g[2,2])))
 }
 
-# betaについてQ-Q Plot
+# Q-Q Plot w.r.t beta
 mini <- max(min(res_beta0),-5*sqrt(g[3,3]))
 maxi <- min(max(res_beta0),5*sqrt(g[3,3]))
 delta <- (maxi-mini)/n
@@ -73,8 +75,7 @@ for(i in 1:M){
   Normal_F_Beta <- append(Normal_F_Beta, pnorm(i/M, 0, sqrt(g[3,3])))
 }
 
-# 結果をPlot
-
+# Plot
 par(oma = c(0, 0, 2.5, 0))
 par(mfrow=c(2,3))
 

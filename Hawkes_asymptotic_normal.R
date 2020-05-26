@@ -1,3 +1,5 @@
+######  Check the asymptotic normality for MLE ###### 
+
 params <- c(0.5, 1, 1.3, 0) #(mu, alpha, beta, x=0)
 
 ############################################################################
@@ -51,6 +53,7 @@ alpha<- rep(0,n)
 beta<- rep(0,n)
 
 # Simulate MLE
+# simulate_uni_hawkes (defined in other code)
 for(i in 1:n){
   t <- simulate_uni_hawkes(params, t_max)
   mle <- optim(params[1:3], loglik, arrivals = t, t_max=t_max, method = "L-BFGS-B", control=list(fnscale=-1),
