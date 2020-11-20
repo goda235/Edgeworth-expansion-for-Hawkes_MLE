@@ -76,7 +76,6 @@ generate_Z <- function(params, t_max, MC){
 }
 
 ## Coefficients
-## MonteCalro simulate for 3rd cumulant of modified Z_T
 Coefficients <- function(params, t_max, MC){
   Z <- generate_Z(params, t_max, MC)
   ### Fisher infomation
@@ -239,7 +238,7 @@ Boot_pdf <- function(x, data, upper=10, lower=-10, break_num=30){
 set.seed(0)
 params <- c(0.3, 1., 1.4) #(mu, alpha, beta)
 t_max <- 100
-MC_coef <- 3000
+MC_coef <- 1000
 MC_boot <- 1000
 MC_hist <- 1000
 
