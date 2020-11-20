@@ -4,9 +4,13 @@ Finally, draw a histgram and Q-Q plot.
 
 ## Setting
 params  : Hawkes parameter
+
 t_max : Observed time
+
 MC_coef : Number of the Monte Carlo simulation for computing coefficients of Edgeworth expansion
+
 MC_boot : Number of the Monte Carlo simulation for computing Bootstrap density
+
 MC_hist : Number of the Monte Carlo simulation for computing MLEs
 
 ## Main Functions
@@ -14,7 +18,7 @@ MC_hist : Number of the Monte Carlo simulation for computing MLEs
 Simulate 1-dim Hawkes process by Ogata's method.
 
 ### loglik(params, arrivals, t_max)
-log-likelihood function of the 1-dim exponential Hawkes process.
+The log-likelihood function of the 1-dim exponential Hawkes process. "arrivals" is a data of Hawkes process.
 
 ### Coefficients(params, t_max, MC_coef)
 Compute the density function of Edgeworth expansion numerically.
